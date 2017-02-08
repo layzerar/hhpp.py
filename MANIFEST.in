@@ -1,0 +1,5 @@
+# include Python file
+recursive-include hhpp *.py
+recursive-include test *.py
+
+include .coveragerc LICENSE README* tox.ini

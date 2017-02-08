@@ -1,0 +1,23 @@
+language: python
+
+matrix:
+  include:
+    - python: 2.6
+    - python: 2.7
+      env: SCA=true
+    - python: pypy
+    - python: 3.4
+    - python: 3.5
+      env: SCA=true
+
+install:
+  - pip install pytest
+  - pip install pytest-cov
+  - pip install coveralls
+  - python setup.py install
+
+script:
+  - if [ -n "$SCA" ]; then py.test --cov=hhpp; else py.test; fi
+
+after_success:
+  - coveralls
